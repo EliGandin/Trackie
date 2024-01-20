@@ -2,6 +2,7 @@
 import Map from "../features/Map/Map";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
+// import SideBar from "./Sidebar";
 // import Loader from "./Loader";
 
 const AppLayout = () => {
