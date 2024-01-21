@@ -2,13 +2,14 @@
 import Map from "../features/Map/Map";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
-// import SideBar from "./Sidebar";
+import Sidebar from "./Sidebar";
 // import Loader from "./Loader";
 
 const AppLayout = () => {
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <NavBar />
+      <Sidebar />
       <Map />
       <Footer />
     </div>

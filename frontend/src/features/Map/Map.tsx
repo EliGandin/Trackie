@@ -1,9 +1,10 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import SideBar from "../../ui/Sidebar";
 
 const Map = () => {
   return (
     <MapContainer
-      className="flex-1 relative w-full h-[900px] z-0"
+      className="w-full h-[900px] z-10"
       center={[40, 40]}
       zoom={5}
       scrollWheelZoom={true}

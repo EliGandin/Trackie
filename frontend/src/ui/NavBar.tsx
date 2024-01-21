@@ -13,7 +13,7 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="flex w-auto bg-neutral-600 items-center justify-around">
+      <nav className="flex w-screen z-40 bg-neutral-600 items-center justify-around relative">
         <button className="text-2xl w-10 h-10 flex items-center justify-around text-neutral-200 hover:ease-in-out  transition duration-[200] hover:-translate-y-1">
           <RxHamburgerMenu onClick={expendSideBar} />
         </button>
