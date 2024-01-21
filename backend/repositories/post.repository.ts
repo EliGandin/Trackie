@@ -12,13 +12,13 @@ export const getAllPosts = async () => {
 
 export const getPostById = async (id: number) => {
   try {
-    const rows = await db.query(
+    const row = await db.query(
       "SELECT * from trackie.posts WHERE post_id = ?",
       id
     );
-    console.log(rows[0]);
+    console.log(row[0]);
 
-    return rows[0];
+    return row[0];
   } catch (error) {
     console.error(error);
   }
@@ -26,7 +26,7 @@ export const getPostById = async (id: number) => {
 
 export const insertPost = async (post: Post) => {
   try {
-    const data = await db.execute(
+    await db.execute(
       "INSERT INTO trackie.posts (post_id,location,user_id,story) VALUES (?,?,?,?)",
       Object.values(post)
     );

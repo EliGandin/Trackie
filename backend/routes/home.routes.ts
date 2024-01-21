@@ -1,10 +1,11 @@
+import { Router } from "express";
+
 import {
   getIndex,
   getPost,
   addPost,
   deletePost,
 } from "../controllers/home.controller";
-import { Router } from "express";
 
 const router = Router();
 

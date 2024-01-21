@@ -1,5 +1,3 @@
-import db from "../util/db";
-
 type location = { lat: number; lng: number };
 
 export class Post {
