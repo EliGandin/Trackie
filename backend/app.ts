@@ -7,6 +7,7 @@ import securitySetup from "./startup/security";
 
 const app = express();
 
+// app.use(securitySetup);
 app.use(bodyParser.json()); // application/json
 
 securitySetup(app);

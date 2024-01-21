@@ -47,7 +47,7 @@ export const deletePost = async (req: Request, res: Response) => {
   console.log("TESTING");
   console.log(id);
   try {
-    await db.query("DELETE FROM trackie.posts WHERE id=?", [id]);
+    await db.query("DELETE FROM posts WHERE id=?", [id]);
     res.status(204).json({ message: `Post ${id} Deleted Successfully` });
   } catch {
     console.error();

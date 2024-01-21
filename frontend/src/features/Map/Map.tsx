@@ -1,5 +1,4 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import SideBar from "../../ui/Sidebar";
 
 const Map = () => {
   return (

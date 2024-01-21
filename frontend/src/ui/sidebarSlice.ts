@@ -15,3 +15,5 @@ const sidebarSlice = createSlice({
 });
 
 export default sidebarSlice.reducer;
+
+export const isVisible = (state) => state.state.isExpanded;
