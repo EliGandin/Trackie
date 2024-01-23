@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 const initialState = {
   isExpanded: false,
@@ -8,12 +9,16 @@ const sidebarSlice = createSlice({
   name: "sidebar",
   initialState,
   reducers: {
-    visible(state) {
-      state.isExpanded = !state.isExpanded;
+    toggleVisible(state, action) {
+      state.isExpanded = action.payload;
     },
   },
 });
 
-export default sidebarSlice.reducer;
+export const isVisible = (state: RootState) => {
+  return state.sidebar.isExpanded;
+};
 
-export const isVisible = (state) => state.state.isExpanded;
+export const { toggleVisible } = sidebarSlice.actions;
+
+export default sidebarSlice.reducer;
