@@ -15,7 +15,7 @@ const sidebarSlice = createSlice({
   },
 });
 
-export const isVisible = (state: RootState) => {
+export const isSideBarExpanded = (state: RootState) => {
   return state.sidebar.isExpanded;
 };
 
