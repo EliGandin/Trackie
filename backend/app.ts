@@ -2,18 +2,18 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import homeRoutes from "./routes/home.routes";
-import db from "./util/db";
+import userRoutes from "./routes/user.routes";
 import securitySetup from "./startup/security";
 
 const app = express();
 
-// app.use(securitySetup);
 app.use(bodyParser.json()); // application/json
 
 securitySetup(app);
 
 //Routes
 app.use("/", homeRoutes);
+// app.use("/signup", userRoutes);
 
 const APP_PORT = 8000;
 

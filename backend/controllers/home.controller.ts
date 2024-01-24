@@ -37,7 +37,7 @@ export const addPost = async (req: Request, res: Response) => {
       .status(201)
       .json({ message: "Post Created Successfully", data: data });
   } catch (err) {
-    console.error();
+    console.error(err);
     res.status(500).json({ message: "Failed To Create Post" });
   }
 };

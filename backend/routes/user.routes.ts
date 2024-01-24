@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { insertUser } from "../repositories/user.repository";
+import { signUpUser } from "../controllers/user.controller";
 
 const router = Router();
 
 // router.get("/profile", getProfile) //TODO:
 
-router.post("/signup", insertUser);
+router.post("/signup", signUpUser);
+
+export default router;

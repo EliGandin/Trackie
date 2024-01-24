@@ -8,6 +8,7 @@ export const getAllPosts = async () => {
     return data.rows;
   } catch (error) {
     console.error(error);
+    throw new Error(String(error));
   }
 };
 
@@ -21,6 +22,7 @@ export const getPostById = async (id: number) => {
     return data.rows[0];
   } catch (error) {
     console.error(error);
+    throw new Error(String(error));
   }
 };
 
@@ -32,5 +34,6 @@ export const insertPost = async (post: Post) => {
     );
   } catch (error) {
     console.error(error);
+    throw new Error(String(error));
   }
 };

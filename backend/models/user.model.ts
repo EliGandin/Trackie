@@ -1,10 +1,12 @@
 export class User {
-  id: number;
+  // id: number; //TODO: FIX
+  name: string;
   email: string; //TODO: email validation
   password: string;
 
-  constructor(id: number, email: string, password: string) {
-    this.id = id;
+  constructor(name: string, email: string, password: string) {
+    // this.id = id;
+    this.name = name;
     this.email = email;
     this.password = password;
   }

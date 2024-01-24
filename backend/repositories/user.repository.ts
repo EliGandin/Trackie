@@ -10,16 +10,18 @@ export const getUserById = async (id: number) => {
     console.log(data.rows);
   } catch (error) {
     console.error(error);
+    throw new Error(String(error));
   }
 };
 
 export const insertUser = async (user: User) => {
   try {
     await db.query(
-      "INSERT INTO users (user_id, email, password) VALUES ($1,$2,$3)",
+      "INSERT INTO users (name, email, password) VALUES ($1,$2,$3)",
       Object.values(user)
     );
   } catch (error) {
     console.error(error);
+    throw new Error(String(error));
   }
 };
