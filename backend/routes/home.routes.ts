@@ -15,7 +15,7 @@ router.get("/", getIndex);
 
 router.get("/post/:id", getPost);
 
-router.post("/", addPost);
+router.post("/addPost", addPost);
 
 router.delete("/post/:id", deletePost);
 
