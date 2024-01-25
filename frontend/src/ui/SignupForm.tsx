@@ -1,7 +1,7 @@
 import { FieldValues, useForm } from "react-hook-form";
 import FieldValueError from "./FieldValueError";
 
-const NewPostForm = () => {
+const SignupForm = () => {
   const {
     register,
     handleSubmit,
@@ -74,4 +74,4 @@ const NewPostForm = () => {
   );
 };
 
-export default NewPostForm;
+export default SignupForm;
