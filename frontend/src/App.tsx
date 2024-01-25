@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
 import Feed from "./features/Feed/Feed";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 const router = createBrowserRouter([
   {
@@ -18,11 +18,12 @@ const router = createBrowserRouter([
 
 const App = () => {
   // useEffect(() => {
-  //   async function call() {
-  //     const res = await fetch("localhost:8000");
-  //     console.log(res);
+  //   async function fetchData() {
+  //     const res = await fetch("http://localhost:8000");
+  //     const data = await res.json();
+  //     console.log(data);
   //   }
-  //   call();
+  //   fetchData();
   // }, []);
 
   return <RouterProvider router={router} />;
