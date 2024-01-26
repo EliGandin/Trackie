@@ -20,7 +20,7 @@ const SignupForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-y-2 text-stone-900"
+      className="flex flex-col items-center gap-y-2 text-stone-900"
     >
       <input
         className="rounded px-4 py-2"
@@ -65,10 +65,10 @@ const SignupForm = () => {
 
       <button
         type="submit"
-        className="mt-5 rounded border bg-neutral-500 text-neutral-100 disabled:bg-neutral-600 disabled:text-neutral-400"
+        className="mt-5 w-20 rounded border bg-emerald-500 py-1 text-neutral-100 disabled:bg-neutral-600 disabled:text-neutral-400"
         disabled={isSubmitting}
       >
-        Submit
+        Sign Up
       </button>
     </form>
   );

@@ -2,7 +2,7 @@ import { FaHome, FaSearch, FaBell } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
-import { isSideBarExpanded, toggleVisible } from "./sidebarSlice";
+import { isSideBarExpanded, toggleVisible } from "../sidebarSlice";
 
 const NavBar = () => {
   const isSidebarVisible = useSelector(isSideBarExpanded);
