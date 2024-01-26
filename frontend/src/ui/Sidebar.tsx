@@ -1,4 +1,4 @@
-import NewPostForm from "./NewPostForm/NewPostForm";
+import SignupForm from "./SignupForm";
 
 const SideBar = () => {
   return (
@@ -9,7 +9,7 @@ const SideBar = () => {
       <img className="gap-4" src="/logo-color.svg" alt="trackie" /> //TODO:
       Style
       {/* sidebar placeholder */}
-      <NewPostForm />
+      <SignupForm />
       <button className="flex w-[32px] items-center justify-center gap-2 rounded-full border border-solid bg-neutral-600 pb-1 text-lg font-bold">
         {/* onClick={to="newpostform"}> TODO:*/}+
       </button>
