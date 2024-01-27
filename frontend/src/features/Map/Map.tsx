@@ -1,22 +1,17 @@
 import { LatLngTuple } from "leaflet";
 import { useEffect, useState } from "react";
-import {
-  MapContainer,
-  Marker,
-  TileLayer,
-  useMap,
-  useMapEvents,
-} from "react-leaflet";
-import { useNavigate } from "react-router-dom";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 
 // import { useGeolocation } from "../../hooks/useGeolocation";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
-import { clearCursorMarker, cursorMarker, setCursorMarker } from "./mapSlice";
+import { cursorMarker } from "./mapSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { ChangeCenter } from "./helpers/ChangeCenter";
+import { DetectClick } from "./helpers/DetectClick";
 
 const Map = () => {
-  const currMarker = useSelector(cursorMarker);
-  const dispatch = useDispatch();
+  // const currMarker = useSelector(cursorMarker);
+  // const dispatch = useDispatch();
 
   const [centerMapPosition, setCenterMapPosition] = useState<LatLngTuple>([
     40, 0,
@@ -59,26 +54,6 @@ const Map = () => {
       </MapContainer>
     </>
   );
-};
-
-const ChangeCenter = ({ position }: { position: LatLngTuple }) => {
-  const currMarker = useSelector(cursorMarker);
-  const dispatch = useDispatch();
-  const map = useMap();
-  map.flyTo(position);
-  dispatch(setCursorMarker(position));
-  return <Marker position={position} />;
-};
-
-const DetectClick = () => {
-  const navigate = useNavigate();
-
-  useMapEvents({
-    click: (e) => {
-      navigate(`?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
-    },
-  });
-  return null;
 };
 
 export default Map;
