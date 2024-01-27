@@ -3,7 +3,9 @@ interface FieldValueProps {
 }
 
 const FieldValueError: React.FC<FieldValueProps> = ({ error }) => {
-  return <p className="bg-neutral-600 text-center text-red-300">{error}</p>;
+  return (
+    <li className="justify-start text-left text-red-300">&#8226; {error}</li>
+  );
 };
 
 export default FieldValueError;
