@@ -1,4 +1,4 @@
-import SignupForm from "../SignupForm";
+import FeedItem from "../../features/Feed/FeedItem";
 
 const SideBar = () => {
   return (
@@ -8,7 +8,10 @@ const SideBar = () => {
     >
       <img className="" src="/logo-color.svg" alt="trackie" /> //TODO: Style
       {/* sidebar placeholder */}
-      <SignupForm />
+      <FeedItem />
+      <FeedItem />
+      <FeedItem />
+      <FeedItem />
       <button className="flex w-[32px] items-center justify-center gap-2 rounded-full border border-solid bg-neutral-600 pb-1 text-lg font-bold">
         {/* onClick={to="newpostform"}> TODO:*/}+
       </button>

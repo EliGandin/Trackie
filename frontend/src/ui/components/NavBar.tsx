@@ -17,19 +17,19 @@ const NavBar = () => {
       </button>
 
       <button className="flex h-10 w-10 items-center justify-around text-2xl text-neutral-200 transition  duration-[200] hover:-translate-y-1 hover:ease-in-out">
-        <FaHome />
+        <FaHome onClick={() => dispatch(toggleVisible(!isSidebarVisible))} />
       </button>
 
       <button className="flex h-10 w-10 items-center justify-around text-2xl text-neutral-200 transition  duration-[200] hover:-translate-y-1 hover:ease-in-out">
-        <FaBell />
+        <FaBell onClick={() => dispatch(toggleVisible(!isSidebarVisible))} />
       </button>
 
       <button className="flex h-10 w-10 items-center justify-around text-2xl text-neutral-200 transition  duration-[200] hover:-translate-y-1 hover:ease-in-out">
-        <FaSearch />
+        <FaSearch onClick={() => dispatch(toggleVisible(!isSidebarVisible))} />
       </button>
 
       <button className="flex h-10 w-10 items-center justify-around text-2xl text-neutral-200 transition  duration-[200] hover:-translate-y-1 hover:ease-in-out">
-        <FaGear />
+        <FaGear onClick={() => dispatch(toggleVisible(!isSidebarVisible))} />
       </button>
     </nav>
   );
