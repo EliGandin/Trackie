@@ -1,9 +1,9 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-// import { useEffect } from "react";
 import AppLayout from "./ui/AppLayout";
 import Feed from "./features/Feed/Feed";
-import SignupForm from "./ui/SignupForm";
-import Home from "./pages/Home";
+import SignupForm from "./pages/signup/SignupForm";
+import Home from "./pages/home/Home";
+import LoginForm from "./pages/login/LoginForm";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -18,18 +18,10 @@ const router = createBrowserRouter([
     ],
   },
   { path: "/signup", element: <SignupForm /> },
+  { path: "/login", element: <LoginForm /> },
 ]);
 
 const App = () => {
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const res = await fetch("http://localhost:8000");
-  //     const data = await res.json();
-  //     console.log(data);
-  //   }
-  //   fetchData();
-  // }, []);
-
   return <RouterProvider router={router} />;
 };
 
