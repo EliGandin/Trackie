@@ -13,14 +13,11 @@ const LoginForm = () => {
   const onSubmit = async (data: FieldValues) => {
     // Submit to server
     console.log(data);
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
     const res = await fetch("http://localhost:8000/login", {
       method: "POST",
-      // headers: {
-      //   "content-type": "application/json",
-      //   "Access-Control-Allow-Origin": "*",
-      //   "Access-Control-Allow-Methods": "POST,PATCH,OPTIONS",
-      // },
+      headers: {
+        "content-type": "application/json",
+      },
       body: JSON.stringify(data),
     });
     console.log(res);

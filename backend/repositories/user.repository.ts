@@ -21,13 +21,13 @@ export const getUser = async (email: string, password: string) => {
       "SELECT user_id,password FROM users WHERE email = ($1)",
       [email]
     );
-
+    console.log(data);
     if (!data.rows[0]) {
-      throw new Error("Incorrect email or password");
+      throw new Error("Incorrect email");
     }
 
     const matchingPassword = compare(data.rows[0]?.password, password);
-    if (!matchingPassword) throw new Error("Incorrect email or password");
+    if (!matchingPassword) throw new Error("Incorrect password");
     return data.rows[0].user_id;
   } catch (error) {
     throw new Error(String(error));

@@ -7,16 +7,16 @@ const SignupForm = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset,
     getValues,
   } = useForm();
   const navigate = useNavigate();
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    const res = await fetch("http://localhost:8000/login", {
+    const res = await fetch("http://localhost:8000/signup", {
       method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
       body: JSON.stringify(data),
     });
 
