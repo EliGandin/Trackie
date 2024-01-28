@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import FeedItem from "../../features/Feed/FeedItem";
 import { getContent } from "../sidebarSlice";
 import Feed from "../../features/Feed/Feed";
 
