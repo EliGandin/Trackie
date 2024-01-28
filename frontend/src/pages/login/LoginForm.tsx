@@ -31,7 +31,7 @@ const LoginForm = () => {
           className="my-2 w-64 rounded px-4 py-2"
           placeholder="email"
           {...register("email", {
-            required: "incorrect email or password",
+            required: "please provide an email",
           })}
         />
 
@@ -43,20 +43,17 @@ const LoginForm = () => {
             required: "Please provide a password",
             minLength: {
               value: 6,
-              message: "incorrect email or password",
+              message: "password must have at least 6 characters",
             },
           })}
         />
 
-        <ul>
+        <ul className="items-start">
           {errors.email && (
             <FieldValueError error={`${errors.email.message}`} />
           )}
           {errors.password && (
             <FieldValueError error={`${errors.password.message}`} />
-          )}
-          {errors.confirmPassword && (
-            <FieldValueError error={`${errors.confirmPassword.message}`} />
           )}
         </ul>
 

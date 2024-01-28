@@ -54,7 +54,7 @@ const SignupForm = () => {
             required: "Please provide a password",
             minLength: {
               value: 6,
-              message: "password must have at least 10 characters",
+              message: "password must have at least 6 characters",
             },
           })}
         />
