@@ -1,8 +1,8 @@
 import { FaHome, FaSearch, FaBell } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useDispatch, useSelector } from "react-redux";
-import { isSideBarExpanded, renderContent } from "../sidebarSlice";
+import { useDispatch } from "react-redux";
+import { renderContent } from "../sidebarSlice";
 
 const NavBar = () => {
   const dispatch = useDispatch();

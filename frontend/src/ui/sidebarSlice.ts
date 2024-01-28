@@ -4,6 +4,12 @@ import { RootState } from "../store";
 const initialState = {
   isExpanded: false,
   content: "",
+  post: {
+    postId: 0,
+    location: { name: "", coordinates: { lat: 0, lng: 0 } },
+    author: "",
+    story: "",
+  },
 };
 
 const sidebarSlice = createSlice({
@@ -22,6 +28,21 @@ const sidebarSlice = createSlice({
         state.content = action.payload.content;
       }
     },
+
+    setDisplayedPost(state, action) {
+      state.content = "post";
+      const { post_id, location, author, story } = action.payload;
+      state.post.postId = post_id;
+      state.post.location = location;
+      state.post.author = author;
+      state.post.story = story;
+    },
+
+    clearPost(state) {
+      state.content = "feed";
+      state.post = { ...initialState.post };
+      console.log(state.content);
+    },
   },
 });
 
@@ -33,6 +54,11 @@ export const getContent = (state: RootState) => {
   return state.sidebar.content;
 };
 
-export const { toggleVisible, renderContent } = sidebarSlice.actions;
+export const getPost = (state: RootState) => {
+  return state.sidebar.post;
+};
+
+export const { toggleVisible, renderContent, setDisplayedPost, clearPost } =
+  sidebarSlice.actions;
 
 export default sidebarSlice.reducer;

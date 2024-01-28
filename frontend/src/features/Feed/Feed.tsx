@@ -3,9 +3,11 @@ import { LatLngTuple } from "leaflet";
 import FeedItem from "./FeedItem";
 
 type Post = {
+  post_id: number;
   location: { name: string; coordinates: LatLngTuple };
   // author: string;
   user_id: number;
+  story: string;
 };
 
 const Feed = () => {
@@ -15,15 +17,20 @@ const Feed = () => {
       const res = await fetch("http://localhost:8000");
       const data = await res.json();
       setPosts(data.data);
-      console.log(data.data);
     }
     fetchData();
-  }, []);
+  }, [posts]);
 
   return (
     <div>
       {posts.map((post) => (
-        <FeedItem location={post.location} author={post.user_id} />
+        <FeedItem
+          postId={post.post_id}
+          location={post.location}
+          author={post.user_id}
+          story={post.story}
+          key={post.post_id}
+        />
       ))}
     </div>
   );

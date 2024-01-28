@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { getContent } from "../sidebarSlice";
 import Feed from "../../features/Feed/Feed";
+import SinglePost from "../../features/Feed/SinglePost";
 
 const SideBar = () => {
   const content = useSelector(getContent);
@@ -12,6 +13,7 @@ const SideBar = () => {
     >
       <img className="" src="/logo-color.svg" alt="trackie" /> //TODO: Style
       {content === "feed" && <Feed />}
+      {content === "post" && <SinglePost />}
       {/* {content === "notification" && <Noti} */}
       {/* {content === "feed" && (<Search />)} */}
       {/* {content === "feed" && (<Settings />)} */}

@@ -1,5 +1,5 @@
 const EmptyFeed = () => {
-  return <div>Empty Feed</div>;
+  return <div>No Posts</div>;
 };
 
 export default EmptyFeed;

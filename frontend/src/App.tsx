@@ -1,6 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
-import Feed from "./features/Feed/Feed";
 import SignupForm from "./pages/signup/SignupForm";
 import Home from "./pages/home/Home";
 import LoginForm from "./pages/login/LoginForm";
@@ -13,7 +12,8 @@ const router = createBrowserRouter([
     // errorElement: <Error /> //TODO:
     children: [
       // { path: "/" }, //TODO: INDEX ROUTE
-      { path: "/app/feed", element: <Feed /> },
+      // { path: "/app/feed", element: <Feed /> },
+      { path: "/app/post/:postId" },
       // {path: "post/new", element: <Post />}, //TODO:
     ],
   },
