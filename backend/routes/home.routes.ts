@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { loginUser, signUpUser } from "../controllers/user.controller"; //TODO: FIX
 
 import {
   getIndex,
@@ -7,11 +8,9 @@ import {
   deletePost,
 } from "../controllers/home.controller";
 
-import { signUpUser } from "../controllers/user.controller"; //TODO: FIX
-
 const router = Router();
 
-router.get("/", getIndex);
+router.get("/", getIndex); //TODO: check if unneccesery
 
 router.get("/post/:id", getPost);
 
@@ -20,5 +19,7 @@ router.post("/addPost", addPost);
 router.delete("/post/:id", deletePost);
 
 router.post("/signup", signUpUser); //TODO: TESTING PURPOSES ONLY
+
+router.post("/login", loginUser);
 
 export default router;

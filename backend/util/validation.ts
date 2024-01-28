@@ -1,25 +1,15 @@
 import { validate } from "email-validator";
+import { User } from "../models/user.model";
 import db from "./db";
 
-// const isValidEmail: boolean (email:string) : boolean => {
-//     if (validate(email) === true) {
-//             // Checking unique email //TODO:
-//     const data = await db.query(
-//         "SELECT user_id FROM users WHERE email = ($1)",
-//         [email]
-//       );
-
-//       if (!data.rowCount) {
-//         return true
-//       }
-//     }
-
-//     return false
-// }
+const isValidNewUser = async (user: User) => {
+  isValidEmail(user.email);
+  isValidPassword(user.password);
+};
 
 const isValidEmail = async (email: string) => {
   if (!validate(email)) {
-    return false;
+    throw new Error("Invalid Email");
   }
 
   const { rowCount } = await db.query(
@@ -27,7 +17,14 @@ const isValidEmail = async (email: string) => {
     [email]
   );
 
-  return !rowCount;
+  if (rowCount) throw new Error("Email is Already in use");
+  return true;
 };
 
-export default isValidEmail;
+const isValidPassword = (password: string) => {
+  if (password.length < 10)
+    throw new Error("Password must be longer than 10 characters");
+  return true;
+};
+
+export default isValidNewUser;
