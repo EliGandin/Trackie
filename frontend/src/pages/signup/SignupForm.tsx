@@ -1,6 +1,6 @@
 import { FieldValues, useForm } from "react-hook-form";
 import FieldValueError from "../../ui/FieldValueError";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
   const {
@@ -10,12 +10,17 @@ const SignupForm = () => {
     reset,
     getValues,
   } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = async (data: FieldValues) => {
-    // Submit to server
     console.log(data);
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    reset();
+    const res = await fetch("http://localhost:8000/login", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) navigate("/login");
   };
 
   return (

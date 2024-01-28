@@ -1,20 +1,30 @@
 import { FieldValues, useForm } from "react-hook-form";
 import FieldValueError from "../../ui/FieldValueError";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset,
   } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = async (data: FieldValues) => {
     // Submit to server
     console.log(data);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    reset();
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    const res = await fetch("http://localhost:8000/login", {
+      method: "POST",
+      // headers: {
+      //   "content-type": "application/json",
+      //   "Access-Control-Allow-Origin": "*",
+      //   "Access-Control-Allow-Methods": "POST,PATCH,OPTIONS",
+      // },
+      body: JSON.stringify(data),
+    });
+    console.log(res);
+    if (res.ok) navigate("/app");
   };
 
   return (
