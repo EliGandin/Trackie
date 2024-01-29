@@ -100,7 +100,7 @@ const SignupForm = () => {
 
         <button
           type="submit"
-          className="absolute bottom-9 w-20 rounded border bg-emerald-500 py-1 text-neutral-100 hover:bg-emerald-400 disabled:bg-neutral-600 disabled:text-neutral-400"
+          className="absolute bottom-9 w-20 rounded border bg-emerald-500 py-1 text-neutral-100 hover:bg-emerald-600 disabled:bg-neutral-600 disabled:text-neutral-400"
           disabled={isSubmitting}
         >
           Sign Up

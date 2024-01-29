@@ -7,10 +7,12 @@ const SideBar = () => {
 
   return (
     <div
-      className="absolute top-[40px] z-40 flex h-[881px] w-96 flex-col items-center justify-between space-y-4 rounded-br-lg rounded-tr-lg border border-neutral-900 
-    bg-neutral-600 p-14 text-neutral-100"
+      className="absolute top-[40px] z-40 flex h-[881px] w-96 flex-col items-center rounded-br-lg rounded-tr-lg border border-neutral-900 
+    bg-neutral-600 text-neutral-100"
     >
-      <img className="" src="/logo-color.svg" alt="trackie" />
+      <div className="relative ml-10 w-[600px]">
+        <img src="/trackie-no-bg.png" alt="trackie" />
+      </div>
       <NewPost />
       {/* {content === "feed" && <Feed />}
       {content === "post" && <SinglePost />} */}
