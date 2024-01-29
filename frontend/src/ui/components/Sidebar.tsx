@@ -1,9 +1,12 @@
-import { useSelector } from "react-redux";
-import { getContent } from "../sidebarSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getContent, renderContent } from "../sidebarSlice";
 import NewPost from "../../features/NewPost/NewPost";
+import Feed from "../../features/Feed/Feed";
+import SinglePost from "../../features/Feed/SinglePost";
 
 const SideBar = () => {
   const content = useSelector(getContent);
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -13,14 +16,19 @@ const SideBar = () => {
       <div className="relative ml-10 w-[600px]">
         <img src="/trackie-no-bg.png" alt="trackie" />
       </div>
-      <NewPost />
-      {/* {content === "feed" && <Feed />}
-      {content === "post" && <SinglePost />} */}
+      {content === "feed" && <Feed />}
+      {content === "post" && <SinglePost />}
+      {content === "newPost" && <NewPost />}
       {/* {content === "notification" && <Noti} */}
-      {/* {content === "feed" && (<Search />)} */}
-      {/* {content === "feed" && (<Settings />)} */}
+      {/* {content === "search" && (<Search />)} */}
+      {/* {content === "set" && (<Settings />)} */}
       {content !== "newPost" && (
-        <button className="flex w-[32px] items-center justify-center gap-2 rounded-full border border-solid bg-neutral-600 pb-1 text-lg font-bold"></button>
+        <button
+          className="flex w-[32px] items-center justify-center gap-2 rounded-full border border-solid bg-neutral-600 pb-1 text-lg font-bold"
+          onClick={() => dispatch(renderContent({ content: "newPost" }))}
+        >
+          +
+        </button>
       )}
     </div>
   );

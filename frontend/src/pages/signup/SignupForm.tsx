@@ -1,5 +1,5 @@
 import { FieldValues, useForm } from "react-hook-form";
-import FieldValueError from "../../ui/FieldValueError";
+import FieldValueError from "../FieldValueError";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
