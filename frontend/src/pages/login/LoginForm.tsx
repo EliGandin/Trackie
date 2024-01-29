@@ -76,7 +76,7 @@ const LoginForm = () => {
           <p className="px-1">Don't have an account?</p>
           <Link
             to="/signup"
-            className="px-2 text-emerald-400 hover:text-emerald-500"
+            className="hover:text-emerald-6500 px-2 text-emerald-400"
           >
             Sign up
           </Link>
