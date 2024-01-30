@@ -3,13 +3,13 @@ import { LatLngTuple, Marker } from "leaflet";
 import { RootState } from "../../store";
 
 type Markers = {
-  cursorMarker: LatLngTuple | null;
+  cursorMarker: LatLngTuple | undefined;
   userMarkers: Marker[];
   // friendsMarkers: Marker[] //TODO:
 };
 
 const initialState: Markers = {
-  cursorMarker: null,
+  cursorMarker: undefined,
   userMarkers: [],
   // friendsMarkers: Marker[] //TODO:
 };
@@ -33,7 +33,7 @@ const mapSlice = createSlice({
     },
 
     clearCursorMarker(state) {
-      state.cursorMarker = null;
+      state.cursorMarker = undefined;
     },
   },
 });

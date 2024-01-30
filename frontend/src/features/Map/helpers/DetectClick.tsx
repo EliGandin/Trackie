@@ -1,12 +1,13 @@
 import { useMapEvents } from "react-leaflet";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCursorMarker } from "../mapSlice";
 
 export const DetectClick = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useMapEvents({
     click: (e) => {
-      navigate(`?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
+      dispatch(setCursorMarker([e.latlng.lat, e.latlng.lng]));
     },
   });
   return null;
