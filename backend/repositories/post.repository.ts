@@ -14,9 +14,10 @@ export const getAllPosts = async () => {
 
 export const getPostById = async (id: number) => {
   try {
-    const data = await db.query("SELECT * from posts WHERE post_id = ($1)", [
-      id,
-    ]);
+    const data = await db.query(
+      "SELECT post_id, location, user_id, story, name from posts NATURAL JOIN users WHERE post_id = ($1)",
+      [id]
+    );
     console.log(data.rows[0]);
 
     return data.rows[0];
