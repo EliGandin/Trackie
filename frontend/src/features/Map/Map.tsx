@@ -3,37 +3,22 @@ import { useEffect, useState } from "react";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 
 // import { useGeolocation } from "../../hooks/useGeolocation";
-import { useUrlPosition } from "../../hooks/useUrlPosition";
-import { cursorMarker } from "./mapSlice";
-import { useDispatch, useSelector } from "react-redux";
 import { ChangeCenter } from "./helpers/ChangeCenter";
 import { DetectClick } from "./helpers/DetectClick";
+import { useDispatch, useSelector } from "react-redux";
+import { cursorMarker, setCursorMarker } from "./mapSlice";
 
 const Map = () => {
-  // const currMarker = useSelector(cursorMarker);
-  // const dispatch = useDispatch();
+  const currMarker = useSelector(cursorMarker);
+  const dispatch = useDispatch();
 
-  const [centerMapPosition, setCenterMapPosition] = useState<LatLngTuple>([
-    40, 0,
-  ]);
-  const [lat, lng] = useUrlPosition().map(Number);
-  // const {
-  //   isLoading,
-  //   position: geoLocationPosition,
-  //   getPosition,
-  // } = useGeolocation();
+  const [centerMapPosition] = useState<LatLngTuple | undefined>([40, 40]);
 
   useEffect(() => {
-    if (lat && lng) {
-      setCenterMapPosition([lat, lng]);
+    if (currMarker) {
+      dispatch(setCursorMarker(currMarker));
     }
-  }, [lat, lng]);
-
-  // useEffect(() => {
-  //   if (geoLocationPosition) {
-  //     setCenterMapPosition([geoLocationPosition.lat, geoLocationPosition.lng]);
-  //   }
-  // }, [geoLocationPosition]);
+  }, [currMarker, dispatch]);
 
   return (
     <>
@@ -49,7 +34,7 @@ const Map = () => {
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
         <Marker position={[51.505, -0.09]} />
-        <ChangeCenter position={centerMapPosition} />
+        <ChangeCenter />
         <DetectClick />
       </MapContainer>
     </>
