@@ -18,22 +18,26 @@ const NewPost = () => {
     // if (currMarker) map.flyTo(currMarker);
   };
 
-  const onSubmit = async (data: FieldValues) => {
-    const res = await fetch("http://localhost:8000/signup", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    console.log(res);
-  };
+  // const onSubmit = async (data: FieldValues) => {
+  //   const res = await fetch("http://localhost:8000/signup", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   });
+  //   console.log(res);
+  // };
 
   return (
     <div className="flex flex-col text-stone-800">
       <form
         className="flex flex-col"
         // onSubmit={handleSubmit(onSubmit)}
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log("GOOD");
+        }}
       >
         <p className="mb-1 text-neutral-300">Location</p>
         <div className="mb-3 flex">
