@@ -21,7 +21,6 @@ export const getUser = async (email: string, password: string) => {
       "SELECT user_id,password FROM users WHERE email = ($1)",
       [email]
     );
-    console.log(data);
     if (!data.rows[0]) {
       throw new Error("Incorrect email");
     }
