@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import jwt from "jsonwebtoken";
 import { User } from "../models/user.model";
 import {
   getUser,
@@ -25,9 +26,17 @@ export const loginUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   try {
     const userId = await getUser(email, password);
+    const token = jwt.sign(
+      {
+        email: email,
+        userId: userId,
+      },
+      "secret",
+      { expiresIn: "1h" }
+    );
     res
       .status(200)
-      .json({ message: "Successfully found a user", userId: userId });
+      .json({ message: "Successfully found a user", userId, token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Failed to retrieve user" });
