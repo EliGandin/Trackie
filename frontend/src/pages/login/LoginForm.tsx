@@ -1,14 +1,19 @@
 import { FieldValues, useForm } from "react-hook-form";
 import FieldValueError from "../FieldValueError";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../stores/slices/userSlice";
 
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    reset,
+    setError,
   } = useForm();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = async (data: FieldValues) => {
     // Submit to server
@@ -17,11 +22,24 @@ const LoginForm = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify(data),
     });
-    console.log(res);
-    if (res.ok) navigate("/app");
+    const userData = await res.json();
+    console.log(userData.userData);
+    if (res.ok) {
+      dispatch(setUser(userData.userData));
+      navigate("/app");
+    } else {
+      setError("notRegisteredInput", {
+        //TODO:FIXXXXXXXX
+        type: "custom",
+        message: "wrong email or password",
+      });
+      // console.log(errors.root?.message);
+      reset();
+    }
   };
 
   return (
@@ -61,6 +79,9 @@ const LoginForm = () => {
           )}
           {errors.password && (
             <FieldValueError error={`${errors.password.message}`} />
+          )}
+          {errors.notRegistered && (
+            <FieldValueError error={`${errors.notRegistered.message}`} />
           )}
         </ul>
 

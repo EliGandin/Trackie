@@ -1,6 +1,6 @@
 import { LatLngTuple } from "leaflet";
 import { useDispatch } from "react-redux";
-import { setDisplayedPost } from "../../ui/sidebarSlice";
+import { setDisplayedPost } from "../../stores/slices/sidebarSlice";
 
 interface FeedItemProps {
   postId: number;

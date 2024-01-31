@@ -1,7 +1,7 @@
 import { FieldValues, useForm } from "react-hook-form";
-import { useMap } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
-import { cursorMarker, setCursorMarker } from "../Map/mapSlice";
+import { cursorMarker, setCursorMarker } from "../../stores/slices/mapSlice";
+import { renderContent } from "../../stores/slices/sidebarSlice";
 
 const NewPost = () => {
   const currMarker = useSelector(cursorMarker);
@@ -18,16 +18,19 @@ const NewPost = () => {
     // if (currMarker) map.flyTo(currMarker);
   };
 
-  // const onSubmit = async (data: FieldValues) => {
-  //   const res = await fetch("http://localhost:8000/signup", {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(data),
-  //   });
-  //   console.log(res);
-  // };
+  const onSubmit = async (data: FieldValues) => {
+    const res = await fetch("http://localhost:8000/signup", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      dispatch(renderContent({ content: "feed" }));
+    }
+  };
 
   return (
     <div className="flex flex-col text-stone-800">
@@ -67,13 +70,21 @@ const NewPost = () => {
         >
           Upload Photos
         </button>
+
         <p className="mt-2 self-center text-neutral-400">
           upload up to 3 photos
         </p>
+
         <button className="mt-5 w-20 self-center rounded-lg border bg-emerald-500 py-1 text-neutral-100 hover:bg-emerald-600 disabled:bg-neutral-600 disabled:text-neutral-400">
           Post
         </button>
       </form>
+      <button
+        className="fixed bottom-12 rounded border px-2 py-1 text-lg text-neutral-100 hover:bg-neutral-700"
+        onClick={() => dispatch(renderContent({ content: "feed" }))}
+      >
+        &#8592; Back to feed
+      </button>
     </div>
   );
 };

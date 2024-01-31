@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import Sidebar from "./components/Sidebar";
-import { isSideBarExpanded } from "./sidebarSlice";
+import { isSideBarExpanded } from "../stores/slices/sidebarSlice";
 import Map from "../features/Map/Map";
 // import Loader from "./Loader";
 

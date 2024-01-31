@@ -1,6 +1,6 @@
 import { Marker, useMap } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
-import { cursorMarker, setCursorMarker } from "../mapSlice";
+import { cursorMarker, setCursorMarker } from "../../../stores/slices/mapSlice";
 
 export const ChangeCenter = () => {
   const currMarker = useSelector(cursorMarker);

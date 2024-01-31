@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getContent, renderContent } from "../sidebarSlice";
+import { getContent, renderContent } from "../../stores/slices/sidebarSlice";
 import NewPost from "../../features/NewPost/NewPost";
 import Feed from "../../features/Feed/Feed";
 import SinglePost from "../../features/Feed/SinglePost";
