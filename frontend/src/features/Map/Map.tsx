@@ -6,7 +6,7 @@ import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { ChangeCenter } from "./helpers/ChangeCenter";
 import { DetectClick } from "./helpers/DetectClick";
 import { useDispatch, useSelector } from "react-redux";
-import { cursorMarker, setCursorMarker } from "./mapSlice";
+import { cursorMarker, setCursorMarker } from "../../stores/slices/mapSlice";
 
 const Map = () => {
   const currMarker = useSelector(cursorMarker);

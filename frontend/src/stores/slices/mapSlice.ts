@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { LatLngTuple, Marker } from "leaflet";
-import { RootState } from "../../store";
+import { RootState } from "../store";
 
 type Markers = {
   cursorMarker: LatLngTuple | undefined;

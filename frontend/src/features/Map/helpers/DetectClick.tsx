@@ -1,6 +1,6 @@
 import { useMapEvents } from "react-leaflet";
 import { useDispatch } from "react-redux";
-import { setCursorMarker } from "../mapSlice";
+import { setCursorMarker } from "../../../stores/slices/mapSlice";
 
 export const DetectClick = () => {
   const dispatch = useDispatch();

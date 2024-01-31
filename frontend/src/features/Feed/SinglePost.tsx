@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearPost, getPost } from "../../ui/sidebarSlice";
+import { clearPost, getPost } from "../../stores/slices/sidebarSlice";
 
 const SinglePost = () => {
   const post = useSelector(getPost);
