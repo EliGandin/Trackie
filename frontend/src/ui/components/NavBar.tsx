@@ -1,5 +1,4 @@
 import { FaHome, FaSearch, FaBell } from "react-icons/fa";
-import { FaGear } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { renderContent } from "../../stores/slices/sidebarSlice";
@@ -8,7 +7,6 @@ import { userDetails } from "../../stores/slices/userSlice";
 const NavBar = () => {
   const dispatch = useDispatch();
   const userData = useSelector(userDetails);
-  console.log(userData);
 
   return (
     <nav className="z-40 flex  w-screen items-center justify-around bg-neutral-600">
@@ -36,10 +34,7 @@ const NavBar = () => {
 
       <button
         className="text-md rounded border px-2 text-neutral-100"
-        onClick={() => {
-          console.log("insettings");
-          dispatch(renderContent({ content: "settings" }));
-        }}
+        onClick={() => dispatch(renderContent({ content: "settings" }))}
       >
         Hello {userData.username}
       </button>
