@@ -3,8 +3,9 @@ import db from "../util/db";
 
 export const getAllPosts = async () => {
   try {
-    const data = await db.query("SELECT * from posts");
-    console.log();
+    const data = await db.query(
+      "SELECT post_id, location, user_id, story, name from posts NATURAL JOIN users"
+    );
     return data.rows;
   } catch (error) {
     console.error(error);
@@ -29,10 +30,11 @@ export const getPostById = async (id: number) => {
 
 export const insertPost = async (post: Post) => {
   try {
-    await db.query(
-      "INSERT INTO posts (post_id,location,user_id,story) VALUES ($1,$2,$3,$4)",
+    const data = await db.query(
+      "INSERT INTO posts (location,user_id,story) VALUES ($1,$2,$3) RETURNING post_id",
       Object.values(post)
     );
+    return data.rows[0].post_id;
   } catch (error) {
     console.error(error);
     throw new Error(String(error));

@@ -1,13 +1,13 @@
-type location = { lat: number; lng: number };
+type coordinates = { lat: number; lng: number };
+
+type location = { name: string; coordinates: coordinates };
 
 export class Post {
-  id: number;
-  location: { lat: number; lng: number };
+  location: location;
   userId: number;
   story: string;
 
-  constructor(id: number, location: location, userId: number, story: string) {
-    this.id = id;
+  constructor(location: location, userId: number, story: string) {
     this.location = location;
     this.userId = userId;
     this.story = story;

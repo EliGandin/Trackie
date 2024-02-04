@@ -18,7 +18,7 @@ export const getUserById = async (id: number) => {
 export const getUser = async (email: string, password: string) => {
   try {
     const data = await db.query(
-      "SELECT user_id,password FROM users WHERE email = ($1)",
+      "SELECT user_id,password,name FROM users WHERE email = ($1)",
       [email]
     );
     if (!data.rows[0]) {
@@ -27,7 +27,7 @@ export const getUser = async (email: string, password: string) => {
 
     const matchingPassword = compare(data.rows[0]?.password, password);
     if (!matchingPassword) throw new Error("Incorrect password");
-    return data.rows[0].user_id;
+    return data.rows[0];
   } catch (error) {
     throw new Error(String(error));
   }
@@ -36,7 +36,6 @@ export const getUser = async (email: string, password: string) => {
 export const insertUser = async (user: User) => {
   try {
     const hashedPassword = await hash(user.password, 12);
-    console.log(hashedPassword);
     await db.query(
       "INSERT INTO users (name, email, password) VALUES ($1,$2,$3)",
       Object.values({ ...user, password: hashedPassword })
