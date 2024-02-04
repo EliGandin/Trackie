@@ -17,7 +17,6 @@ const LoginForm = () => {
 
   const onSubmit = async (data: FieldValues) => {
     // Submit to server
-    console.log(data);
     const res = await fetch("http://localhost:8000/login", {
       method: "POST",
       headers: {
@@ -27,7 +26,7 @@ const LoginForm = () => {
       body: JSON.stringify(data),
     });
     const userData = await res.json();
-    console.log(userData.userData);
+
     if (res.ok) {
       dispatch(setUser(userData.userData));
       navigate("/app");

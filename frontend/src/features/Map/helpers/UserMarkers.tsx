@@ -1,6 +1,6 @@
+import { Marker } from "react-leaflet";
 import { useEffect, useState } from "react";
 import { LatLngTuple } from "leaflet";
-import FeedItem from "./FeedItem";
 
 type Post = {
   post_id: number;
@@ -10,7 +10,7 @@ type Post = {
   story: string;
 };
 
-const Feed = () => {
+const UserMarkers = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   useEffect(() => {
     async function fetchData() {
@@ -22,19 +22,10 @@ const Feed = () => {
     fetchData();
   }, []);
 
-  return (
-    <div>
-      {posts.map((post) => (
-        <FeedItem
-          postId={post.post_id}
-          location={post.location}
-          author={post.user_id}
-          story={post.story}
-          key={post.post_id}
-        />
-      ))}
-    </div>
-  );
+  return posts.map((post) => {
+    console.log(post.location.coordinates);
+    return <Marker position={post.location.coordinates} />;
+  });
 };
 
-export default Feed;
+export default UserMarkers;
