@@ -7,6 +7,7 @@ import { ChangeCenter } from "./helpers/ChangeCenter";
 import { DetectClick } from "./helpers/DetectClick";
 import { useDispatch, useSelector } from "react-redux";
 import { cursorMarker, setCursorMarker } from "../../stores/slices/mapSlice";
+import UserMarkers from "./helpers/UserMarkers";
 
 const Map = () => {
   const currMarker = useSelector(cursorMarker);
@@ -34,6 +35,7 @@ const Map = () => {
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
         <Marker position={[51.505, -0.09]} />
+        <UserMarkers />
         <ChangeCenter />
         <DetectClick />
       </MapContainer>

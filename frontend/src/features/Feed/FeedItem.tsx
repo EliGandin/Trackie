@@ -23,7 +23,7 @@ const FeedItem = ({ postId, location, author, story }: FeedItemProps) => {
       {/* <img/> */}
 
       <p className="">{author}'s post from:</p>
-      <span className="text-center text-xl">{location.name}</span>
+      <span className="text-center text-xl">{location?.name}</span>
     </button>
   );
 };
