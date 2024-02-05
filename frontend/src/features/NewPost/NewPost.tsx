@@ -38,8 +38,6 @@ const NewPost = () => {
       userId: user.userId,
     };
 
-    console.log(postData);
-
     const res = await fetch("http://localhost:8000/addPost", {
       method: "POST",
       headers: {
@@ -48,10 +46,7 @@ const NewPost = () => {
       body: JSON.stringify({ ...postData }),
     });
 
-    console.log(res);
-
     const parsedRes = await res.json();
-    console.log(parsedRes);
 
     if (res.ok) {
       dispatch(addMarker({ currMarker, postId: parsedRes.data }));

@@ -16,7 +16,6 @@ const Feed = () => {
     async function fetchData() {
       const res = await fetch("http://localhost:8000");
       const data = await res.json();
-      console.log(data);
       setPosts(data.data);
     }
     fetchData();
