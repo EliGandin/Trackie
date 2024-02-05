@@ -5,8 +5,7 @@ import { setDisplayedPost } from "../../stores/slices/sidebarSlice";
 interface FeedItemProps {
   postId: number;
   location: { name: string; coordinates: LatLngTuple };
-  // author: string;
-  author: number;
+  author: string;
   story: string;
 }
 

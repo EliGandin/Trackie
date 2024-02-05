@@ -5,7 +5,7 @@ import FeedItem from "./FeedItem";
 type Post = {
   post_id: number;
   location: { name: string; coordinates: LatLngTuple };
-  // author: string;
+  name: string;
   user_id: number;
   story: string;
 };
@@ -27,7 +27,7 @@ const Feed = () => {
         <FeedItem
           postId={post.post_id}
           location={post.location}
-          author={post.user_id}
+          author={post.name}
           story={post.story}
           key={post.post_id}
         />
