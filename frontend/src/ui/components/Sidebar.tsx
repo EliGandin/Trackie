@@ -16,15 +16,17 @@ const SideBar = () => {
       <div className="relative ml-10 w-[600px]">
         <img src="/trackie-no-bg.png" alt="trackie" />
       </div>
-      {content === "feed" && <Feed />}
-      {content === "post" && <SinglePost />}
-      {content === "newPost" && <NewPost />}
-      {/* {content === "notification" && <Noti} */}
-      {/* {content === "search" && (<Search />)} */}
-      {/* {content === "set" && (<Settings />)} */}
+      <div className="mt-[-65px]">
+        {content === "feed" && <Feed />}
+        {content === "post" && <SinglePost />}
+        {content === "newPost" && <NewPost />}
+        {/* {content === "notification" && <Noti} */}
+        {/* {content === "search" && (<Search />)} */}
+        {/* {content === "set" && (<Settings />)} */}
+      </div>
       {content !== "newPost" && (
         <button
-          className="flex w-[32px] items-center justify-center gap-2 rounded-full border border-solid bg-neutral-600 pb-1 text-lg font-bold"
+          className="absolute bottom-5 w-[32px] rounded-full border border-solid bg-neutral-600 pb-1 text-lg font-bold"
           onClick={() => dispatch(renderContent({ content: "newPost" }))}
         >
           +
