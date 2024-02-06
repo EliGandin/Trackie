@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LatLngTuple } from "leaflet";
 import FeedItem from "./FeedItem";
+import EmptyFeed from "./EmptyFeed";
 
 type Post = {
   post_id: number;
@@ -23,15 +24,19 @@ const Feed = () => {
 
   return (
     <div>
-      {posts.map((post) => (
-        <FeedItem
-          postId={post.post_id}
-          location={post.location}
-          author={post.name}
-          story={post.story}
-          key={post.post_id}
-        />
-      ))}
+      {posts.length === 0 ? (
+        <EmptyFeed />
+      ) : (
+        posts.map((post) => (
+          <FeedItem
+            postId={post.post_id}
+            location={post.location}
+            author={post.name}
+            story={post.story}
+            key={post.post_id}
+          />
+        ))
+      )}
     </div>
   );
 };

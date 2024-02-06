@@ -3,6 +3,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { renderContent } from "../../stores/slices/sidebarSlice";
 import { userDetails } from "../../stores/slices/userSlice";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -17,10 +18,6 @@ const NavBar = () => {
       </button>
 
       <button className="flex h-10 w-10 items-center justify-around text-2xl text-neutral-200 transition duration-[200] hover:-translate-y-1 hover:ease-in-out">
-        <FaHome onClick={() => dispatch(renderContent({ content: "home" }))} />
-      </button>
-
-      <button className="flex h-10 w-10 items-center justify-around text-2xl text-neutral-200 transition duration-[200] hover:-translate-y-1 hover:ease-in-out">
         <FaBell
           onClick={() => dispatch(renderContent({ content: "notifications" }))}
         />
@@ -31,6 +28,13 @@ const NavBar = () => {
           onClick={() => dispatch(renderContent({ content: "search" }))}
         />
       </button>
+
+      <Link
+        to="/"
+        className="flex h-10 w-10 items-center justify-around text-2xl text-neutral-200 transition duration-[200] hover:-translate-y-1 hover:ease-in-out"
+      >
+        <FaHome />
+      </Link>
 
       <button
         className="text-md rounded border px-2 text-neutral-100"

@@ -3,6 +3,7 @@ import { getContent, renderContent } from "../../stores/slices/sidebarSlice";
 import NewPost from "../../features/NewPost/NewPost";
 import Feed from "../../features/Feed/Feed";
 import SinglePost from "../../features/Feed/SinglePost";
+import Search from "../../features/Search/Search";
 
 const SideBar = () => {
   const content = useSelector(getContent);
@@ -21,7 +22,7 @@ const SideBar = () => {
         {content === "post" && <SinglePost />}
         {content === "newPost" && <NewPost />}
         {/* {content === "notification" && <Noti} */}
-        {/* {content === "search" && (<Search />)} */}
+        {content === "search" && <Search />}
         {/* {content === "set" && (<Settings />)} */}
       </div>
       {content !== "newPost" && (
