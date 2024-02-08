@@ -4,6 +4,7 @@ import NewPost from "../../features/NewPost/NewPost";
 import Feed from "../../features/Feed/Feed";
 import SinglePost from "../../features/Feed/SinglePost";
 import Search from "../../features/Search/Search";
+import FriendList from "../../features/Friends/FriendList";
 
 const SideBar = () => {
   const content = useSelector(getContent);
@@ -21,11 +22,12 @@ const SideBar = () => {
         {content === "feed" && <Feed />}
         {content === "post" && <SinglePost />}
         {content === "newPost" && <NewPost />}
+        {content === "friendList" && <FriendList />}
         {/* {content === "notification" && <Noti} */}
         {content === "search" && <Search />}
         {/* {content === "set" && (<Settings />)} */}
       </div>
-      {content !== "newPost" && (
+      {(content === "feed" || content === "post") && (
         <button
           className="absolute bottom-5 w-[32px] rounded-full border border-solid bg-neutral-600 pb-1 text-lg font-bold"
           onClick={() => dispatch(renderContent({ content: "newPost" }))}
