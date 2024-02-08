@@ -25,7 +25,8 @@ export const getUser = async (email: string, password: string) => {
       throw new Error("Incorrect email");
     }
 
-    const matchingPassword = compare(data.rows[0]?.password, password);
+    const matchingPassword = await compare(password, data.rows[0]?.password);
+
     if (!matchingPassword) throw new Error("Incorrect password");
     return data.rows[0];
   } catch (error) {
