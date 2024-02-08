@@ -1,4 +1,4 @@
-import { FaHome, FaSearch, FaBell } from "react-icons/fa";
+import { FaSearch, FaBell, FaUserFriends } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { renderContent } from "../../stores/slices/sidebarSlice";
@@ -33,7 +33,7 @@ const NavBar = () => {
         to="/"
         className="flex h-10 w-10 items-center justify-around text-2xl text-neutral-200 transition duration-[200] hover:-translate-y-1 hover:ease-in-out"
       >
-        <FaHome />
+        <FaUserFriends />
       </Link>
 
       <button

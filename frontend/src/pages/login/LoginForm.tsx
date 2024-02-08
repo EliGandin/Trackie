@@ -16,7 +16,6 @@ const LoginForm = () => {
   } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  dispatch(clearUser());
   const user = useSelector(userDetails);
 
   const { mutate } = useMutation({
@@ -29,7 +28,6 @@ const LoginForm = () => {
   });
 
   const onSubmit = async (data: FieldValues) => {
-    // Submit to server
     mutate(data);
     if (!user.userId) reset();
   };
