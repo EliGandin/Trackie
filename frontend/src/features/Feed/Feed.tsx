@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
 import { LatLngTuple } from "leaflet";
+import { useQuery } from "@tanstack/react-query";
 import FeedItem from "./FeedItem";
 import EmptyFeed from "./EmptyFeed";
+import { getAllPosts } from "../../services/postServices";
 
 type Post = {
   post_id: number;
@@ -12,22 +13,23 @@ type Post = {
 };
 
 const Feed = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("http://localhost:8000");
-      const data = await res.json();
-      setPosts(data.data);
-    }
-    fetchData();
-  }, []);
+  const { data, isError, isLoading } = useQuery({
+    queryKey: ["posts"],
+    queryFn: async () => {
+      const res = await getAllPosts();
+      return res.data;
+    },
+  });
 
   return (
     <div>
-      {posts.length === 0 ? (
+      {/* TODO:
+      {isLoading && <p>Loading</p>} */}
+
+      {!data || data?.length === 0 ? (
         <EmptyFeed />
       ) : (
-        posts.map((post) => (
+        data.map((post: Post) => (
           <FeedItem
             postId={post.post_id}
             location={post.location}
