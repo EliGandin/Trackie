@@ -1,10 +1,10 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
-import { setUser } from "../../stores/slices/userSlice";
+import { clearUser, setUser, userDetails } from "../../stores/slices/userSlice";
 import FieldValueError from "../FieldValueError";
-import { login } from "../../services/userServices";
+import { userLogin } from "../../services/userServices";
 
 const LoginForm = () => {
   const {
@@ -16,48 +16,22 @@ const LoginForm = () => {
   } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  dispatch(clearUser());
+  const user = useSelector(userDetails);
 
-  const userLogin = useMutation({
-    mutationFn: login,
-    onSuccess: () => {
-      console.log(userLogin.data);
-      // dispatch(setUser(data));
+  const { mutate } = useMutation({
+    mutationKey: ["userLogin"],
+    mutationFn: userLogin,
+    onSuccess: (data) => {
+      dispatch(setUser(data.data.userData));
       navigate("/app");
     },
   });
 
   const onSubmit = async (data: FieldValues) => {
     // Submit to server
-
-    const { data: userData, mutate } = userLogin;
-
-    console.log(userData);
-
-    const res = mutate(data);
-    console.log(res);
-
-    // const res = await fetch("http://localhost:8000/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //     Accept: "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // });
-    // const userData = await res.json();
-
-    // if (res.ok) {
-    //   dispatch(setUser(userData.userData));
-    //   navigate("/app");
-    // } else {
-    //   setError("notRegisteredInput", {
-    //     //TODO:FIXXXXXXXX
-    //     type: "custom",
-    //     message: "wrong email or password",
-    //   });
-    //   // console.log(errors.root?.message);
-    //   reset();
-    // }
+    mutate(data);
+    if (!user.userId) reset();
   };
 
   return (

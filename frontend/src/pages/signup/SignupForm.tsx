@@ -1,6 +1,8 @@
 import { FieldValues, useForm } from "react-hook-form";
 import FieldValueError from "../FieldValueError";
 import { Link, useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { userSignup } from "../../services/userServices";
 
 const SignupForm = () => {
   const {
@@ -11,16 +13,16 @@ const SignupForm = () => {
   } = useForm();
   const navigate = useNavigate();
 
-  const onSubmit = async (data: FieldValues) => {
-    const res = await fetch("http://localhost:8000/signup", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+  const { mutate } = useMutation({
+    mutationKey: ["userSignup"],
+    mutationFn: userSignup,
+    onSuccess: () => {
+      navigate("/login");
+    },
+  });
 
-    if (res.ok) navigate("/login");
+  const onSubmit = async (data: FieldValues) => {
+    mutate(data);
   };
 
   return (
