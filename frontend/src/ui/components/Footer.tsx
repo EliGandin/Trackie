@@ -1,7 +1,17 @@
+import { useDispatch } from "react-redux";
+import { clearCursorMarker } from "../../stores/slices/mapSlice";
+
 const Footer = () => {
+  const dispatch = useDispatch();
+
   return (
-    <footer className="flex text-neutral-200 items-center justify-between bg-neutral-600 bottom-0 fixed w-screen z-10 h-8">
-      <button>Footer</button>
+    <footer className="fixed bottom-0 z-10 flex h-8 w-screen items-center justify-center bg-neutral-600 text-neutral-200">
+      <button
+        className="rounded border border-stone-200 px-1"
+        onClick={() => dispatch(clearCursorMarker())}
+      >
+        Clear Marker
+      </button>
     </footer>
   );
 };
