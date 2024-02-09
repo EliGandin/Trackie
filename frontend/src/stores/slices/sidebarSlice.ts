@@ -41,7 +41,6 @@ const sidebarSlice = createSlice({
     clearPost(state) {
       state.content = "feed";
       state.post = { ...initialState.post };
-      console.log(state.content);
     },
   },
 });

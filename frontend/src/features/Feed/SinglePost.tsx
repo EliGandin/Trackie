@@ -5,22 +5,25 @@ const SinglePost = () => {
   const post = useSelector(getPost);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   async function fetchPost() {
-  //     const res = await fetch(`http://localhost:8000/post/${postId}`);
-  //     console.log(res);
-  //     const data = await res.json();
-  //     console.log(data);
-  //   }
-  //   fetchPost();
-  // }, [postId]);
-
   return (
-    <div className="m-4 flex h-20 w-80 flex-col rounded-lg bg-neutral-500 px-3 pt-1 text-left">
+    <div className="m-4 flex h-auto w-80 flex-col rounded-lg bg-neutral-500 px-3 pt-1 text-left">
       <p className="">{post.author}'s post from:</p>
-      <span className="text-center text-xl">{post.location?.name}</span>
 
-      <button onClick={() => dispatch(clearPost())}>Show feed</button>
+      <span className="text-left text-xl">
+        {post.location?.name}
+        <button className="absolute right-10 rounded border border-neutral-100 px-2 align-middle text-lg">
+          Fly To Location
+        </button>
+      </span>
+
+      <p className="py-2">{post.story} </p>
+
+      <button
+        className="border-stone-10 absolute bottom-16 self-center rounded border px-2 text-neutral-100"
+        onClick={() => dispatch(clearPost())}
+      >
+        Show feed
+      </button>
     </div>
   );
 };

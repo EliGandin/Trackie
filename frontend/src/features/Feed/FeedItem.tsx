@@ -1,6 +1,9 @@
 import { LatLngTuple } from "leaflet";
 import { useDispatch } from "react-redux";
-import { setDisplayedPost } from "../../stores/slices/sidebarSlice";
+import {
+  renderContent,
+  setDisplayedPost,
+} from "../../stores/slices/sidebarSlice";
 
 interface FeedItemProps {
   postId: number;
@@ -14,10 +17,11 @@ const FeedItem = ({ postId, location, author, story }: FeedItemProps) => {
 
   return (
     <button
-      onClick={() =>
+      onClick={() => {
         //TODO:
-        dispatch(setDisplayedPost({ postId, location, author, story }))
-      }
+        dispatch(renderContent({ content: "post" }));
+        dispatch(setDisplayedPost({ postId, location, author, story }));
+      }}
       className="m-4 flex h-20 w-80 flex-col rounded-lg bg-neutral-500 px-3 pt-1 text-left"
     >
       {/* <img/> */}
