@@ -10,7 +10,7 @@ import {
 
 const router = Router();
 
-router.get("/", getIndex); //TODO: check if unneccesery
+router.get("/", getIndex);
 
 router.get("/post/:id", getPost);
 
