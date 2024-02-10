@@ -2,8 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import homeRoutes from "./routes/home.routes";
-import securitySetup from "./middleware/security";
-import headerSetup from "./middleware/headers";
+import securitySetup from "./middlewares/security";
+import headerSetup from "./middlewares/headers";
 
 const app = express();
 
