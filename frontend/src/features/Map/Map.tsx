@@ -24,7 +24,7 @@ const Map = () => {
   return (
     <>
       <MapContainer
-        className="z-10 h-[900px] w-full"
+        className="z-10 h-[900px] w-full overflow-hidden"
         center={centerMapPosition}
         zoom={5}
         scrollWheelZoom={true}

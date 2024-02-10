@@ -10,7 +10,7 @@ const AppLayout = () => {
   const renderSideBar = useSelector(isSideBarExpanded);
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col overflow-hidden overflow-y-hidden">
       <NavBar />
       {renderSideBar && <Sidebar />}
       <Outlet />

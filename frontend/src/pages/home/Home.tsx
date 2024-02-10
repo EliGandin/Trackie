@@ -9,26 +9,25 @@ const Home = () => {
         <img className="blur-sm" src="/homepage-bg.jpg" alt="background" />
 
         <div>
-          <div className="absolute top-10 z-20 h-96 ">
+          <div className="absolute top-0 z-20 h-96">
             <img
-              className="ml-[-200px] mt-[-200px] w-screen"
+              className="w-screen lg:ml-[-160px] lg:mt-[-125px] xl:ml-[-200px] xl:mt-[-150px] 2xl:ml-[-250px] 2xl:mt-[-250px]"
               src="/trackie-no-bg.png"
               alt="logo"
             />
           </div>
-          <div className="absolute top-0 z-0 h-56 w-screen bg-indigo-100 blur-3xl"></div>
 
-          {/* <h1 className="absolute left-14 top-10 z-20 text-9xl text-stone-800">
-            trackie
-          </h1> */}
-          <h1 className="absolute left-14 top-[350px] z-20 ml-3 text-4xl text-stone-900">
+          <h1
+            className="xl-py-2 xl:text-2 xl absolute z-20 rounded-lg border border-sky-600 border-opacity-5 px-1 py-2 font-semibold text-stone-900 backdrop-blur-sm lg:left-[175px] lg:top-[250px] lg:text-2xl xl:left-[250px]
+          xl:top-[350px] xl:text-3xl 2xl:left-[300px] 2xl:top-[450px] 2xl:text-4xl"
+          >
             The social media app to let you show off your travels, you Mr.
             Worldwide.
           </h1>
-          <h2 className="absolute left-14 top-[425px] z-20 ml-3 text-4xl text-stone-800">
-            Just click on the map, add your photos and tell your story
+
+          <h2 className="absolute z-20 rounded-lg border border-sky-600 border-opacity-5 px-1 py-2 font-semibold text-stone-900 lg:left-[350px] lg:top-[300px] lg:text-2xl xl:left-[450px] xl:top-[450px] xl:text-4xl xl:font-normal 2xl:left-[850px] 2xl:top-[525px] 2xl:text-4xl">
+            Just click on the map, add your photos and tell your story.
           </h2>
-          <div className="absolute top-56 z-0 h-[280px] w-screen bg-indigo-100 blur-xl"></div>
         </div>
       </div>
       <footer className="fixed bottom-0 z-40 h-[32px] w-screen bg-stone-600" />

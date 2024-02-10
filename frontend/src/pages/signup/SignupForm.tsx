@@ -30,7 +30,7 @@ const SignupForm = () => {
       <div>
         <img
           className="z-10 blur-sm"
-          src="/signup.jpg"
+          src="/backgrounds/signup.jpg"
           alt="background-signup"
         />
       </div>
