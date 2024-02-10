@@ -10,12 +10,7 @@ const router = createBrowserRouter([
     path: "/app",
     element: <AppLayout />,
     // errorElement: <Error /> //TODO:
-    children: [
-      // { path: "/" }, //TODO: INDEX ROUTE
-      // { path: "/app/feed", element: <Feed /> },
-      { path: "/app/post/:postId" },
-      // {path: "post/new", element: <Post />}, //TODO:
-    ],
+    children: [{ path: "/app/post/:postId" }],
   },
   { path: "/signup", element: <SignupForm /> },
   { path: "/login", element: <LoginForm /> },

@@ -9,7 +9,7 @@ const NavBar = () => {
   const userData = useSelector(userDetails);
 
   return (
-    <nav className="z-40 flex  w-screen items-center justify-around bg-neutral-600">
+    <nav className="z-40 flex w-screen items-center justify-around bg-neutral-600">
       <button className="flex h-10 w-10 items-center justify-around text-2xl text-neutral-200 transition duration-[200] hover:-translate-y-1 hover:ease-in-out">
         <RxHamburgerMenu
           onClick={() => dispatch(renderContent({ content: "feed" }))}

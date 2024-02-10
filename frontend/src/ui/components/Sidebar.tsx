@@ -12,11 +12,11 @@ const SideBar = () => {
 
   return (
     <div
-      className="absolute top-[40px] z-40 flex h-[881px] w-96 flex-col items-center rounded-br-lg rounded-tr-lg border border-neutral-900 
-    bg-neutral-600 text-neutral-100"
+      className="absolute top-[40px] z-40 flex h-[666px] w-96 flex-col items-center overflow-hidden rounded-br-lg rounded-tr-lg border
+    border-neutral-900 bg-neutral-600 text-neutral-100 lg:h-[578px] 2xl:h-[881px]"
     >
       <div className="relative ml-10 w-[600px]">
-        <img src="/trackie-no-bg.png" alt="trackie" />
+        <img src="/backgrounds/trackie-no-bg.png" alt="trackie" />
       </div>
       <div className="mt-[-65px]">
         {content === "feed" && <Feed />}

@@ -35,7 +35,11 @@ const LoginForm = () => {
   return (
     <div className="relative z-40 flex h-screen w-screen flex-col items-center overflow-hidden bg-white">
       <div>
-        <img className="z-10 blur-sm" src="login.jpg" alt="background-login" />
+        <img
+          className="z-10 blur-sm"
+          src="/backgrounds/login.jpg"
+          alt="background-login"
+        />
       </div>
 
       <form
