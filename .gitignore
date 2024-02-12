@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# Vite specific files
+.vite/
+
+# Package managers
+package-lock.json
+
+# TypeScript compile files
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+
+# Additional ignore patterns (optional)
+.DS_Store
+*.log
