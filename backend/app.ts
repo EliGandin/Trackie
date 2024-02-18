@@ -8,6 +8,7 @@ import headerSetup from "./middlewares/headers";
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // application/json
 dotenv.config();
 

@@ -1,6 +1,7 @@
 import { LatLngTuple } from "leaflet";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
+  getPost,
   renderContent,
   setDisplayedPost,
 } from "../../stores/slices/sidebarSlice";
@@ -18,7 +19,6 @@ const FeedItem = ({ postId, location, author, story }: FeedItemProps) => {
   return (
     <button
       onClick={() => {
-        //TODO:
         dispatch(renderContent({ content: "post" }));
         dispatch(setDisplayedPost({ postId, location, author, story }));
       }}

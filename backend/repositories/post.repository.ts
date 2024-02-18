@@ -1,5 +1,6 @@
 import { Post } from "../models/post.model";
 import db from "../util/db";
+import { getImage } from "../util/s3";
 
 export const getAllPosts = async () => {
   try {
@@ -19,9 +20,10 @@ export const getPostById = async (id: number) => {
       "SELECT post_id, location, user_id, story, name from posts NATURAL JOIN users WHERE post_id = ($1)",
       [id]
     );
-    console.log(data.rows[0]);
 
-    return data.rows[0];
+    const image = await getImage(data.rows[0].post_id);
+
+    return { data: data.rows[0], image };
   } catch (error) {
     console.error(error);
     throw new Error(String(error));

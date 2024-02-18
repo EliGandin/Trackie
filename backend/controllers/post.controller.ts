@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import db from "../util/db";
 import { Post } from "../models/post.model";
 import {
@@ -6,6 +7,7 @@ import {
   getPostById,
   insertPost,
 } from "../repositories/post.repository";
+import { putImage } from "../util/s3";
 
 export const getIndex = async (req: Request, res: Response) => {
   try {
@@ -18,7 +20,6 @@ export const getIndex = async (req: Request, res: Response) => {
 
 export const getPost = async (req: Request, res: Response) => {
   const id = req.params.id;
-  console.log(id);
   try {
     const data = await getPostById(Number(id));
 
@@ -30,11 +31,17 @@ export const getPost = async (req: Request, res: Response) => {
 
 export const addPost = async (req: Request, res: Response) => {
   try {
-    const { location, userId, story } = req.body;
+    const { location, userId, story } = JSON.parse(req.body.postData);
+    const file = req.file;
+
     const post = new Post(location, userId, story);
-    const data = await insertPost(post);
-    console.log(data);
-    return res.status(201).json({ message: "Post Created Successfully", data });
+    const postId = await insertPost(post);
+
+    if (file) putImage(file, postId);
+
+    return res
+      .status(201)
+      .json({ message: "Post Created Successfully", postId });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Failed To Create Post" });
@@ -43,8 +50,6 @@ export const addPost = async (req: Request, res: Response) => {
 
 export const deletePost = async (req: Request, res: Response) => {
   const id = req.params.id;
-  console.log("TESTING");
-  console.log(id);
   try {
     await db.query("DELETE FROM posts WHERE id=?", [id]);
     res.status(204).json({ message: `Post ${id} Deleted Successfully` });

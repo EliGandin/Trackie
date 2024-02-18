@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { loginUser, signUpUser } from "../controllers/user.controller"; //TODO: FIX
+import multer from "multer";
 
 import {
   getIndex,
@@ -7,6 +8,10 @@ import {
   addPost,
   deletePost,
 } from "../controllers/post.controller";
+import { uploadImage } from "../middlewares/multer";
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 const router = Router();
 
@@ -14,7 +19,7 @@ router.get("/", getIndex);
 
 router.get("/post/:id", getPost);
 
-router.post("/addPost", addPost);
+router.post("/addPost", upload.single("image"), addPost);
 
 router.delete("/post/:id", deletePost);
 
