@@ -1,14 +1,19 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { addMarker, cursorMarker } from "../../stores/slices/mapSlice";
+import FormData from "form-data";
+
+import { cursorMarker } from "../../stores/slices/mapSlice";
 import { renderContent } from "../../stores/slices/sidebarSlice";
 import FieldValueError from "../../pages/FieldValueError";
 import { userDetails } from "../../stores/slices/userSlice";
+import { newPost } from "../../services/postServices";
+import { useState } from "react";
 
 const NewPost = () => {
   const currMarker = useSelector(cursorMarker);
   const user = useSelector(userDetails);
   const dispatch = useDispatch();
+  const [file, setFile] = useState<File | null>(null);
 
   const {
     register,
@@ -23,39 +28,23 @@ const NewPost = () => {
   };
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    console.log(currMarker);
     if (!currMarker) return;
 
-    const location = {
-      name: data.locationName,
-      coordinates: currMarker,
-    };
-
     const postData = {
-      location,
+      location: { name: data.locationName, coordinates: currMarker },
       story: data.story,
       userId: user.userId,
     };
 
-    const res = await fetch("http://localhost:8000/addPost", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ ...postData }),
-    });
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("postData", JSON.stringify(postData));
 
-    const parsedRes = await res.json();
-
-    if (res.ok) {
-      dispatch(addMarker({ currMarker, postId: parsedRes.data }));
-      dispatch(renderContent({ content: "feed" }));
-    }
+    newPost(formData);
   };
 
   return (
-    <div className="flex flex-col text-stone-800">
+    <div className="z-40 flex flex-col text-stone-800">
       <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
         <p className="mb-1 text-neutral-300">Location</p>
         <div className="mb-3 flex">
@@ -79,18 +68,28 @@ const NewPost = () => {
           {...register("story")}
         />
 
-        <button
-          type="button"
-          className="mt-5 w-24 self-center rounded-lg border bg-emerald-500 py-1 text-neutral-100 hover:bg-emerald-600 disabled:bg-neutral-600 disabled:text-neutral-400"
-          disabled={isSubmitting}
-          onClick={(e) => flyToLocation(e)}
-        >
-          Upload Photos
-        </button>
+        <div className="mt-5 w-24 self-center rounded-lg border bg-emerald-500 py-1 text-neutral-100 hover:bg-emerald-600 disabled:bg-neutral-600 disabled:text-neutral-400">
+          <button
+            type="button"
+            disabled={isSubmitting}
+            onClick={(e) => flyToLocation(e)}
+          >
+            Upload Photos
+          </button>
 
-        <p className="mt-2 self-center text-neutral-400">
+          <input
+            {...register("image")}
+            type="file"
+            name="image"
+            className=""
+            onChange={(e) => e.target.files && setFile(e.target.files[0])}
+            accept="image/*"
+          />
+        </div>
+
+        {/* <p className="mt-2 self-center text-neutral-400">
           upload up to 3 photos
-        </p>
+        </p> */}
 
         <button className="mt-5 w-20 self-center rounded-lg border bg-emerald-500 py-1 text-neutral-100 hover:bg-emerald-600 disabled:bg-neutral-600 disabled:text-neutral-400">
           Post

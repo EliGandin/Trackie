@@ -31,8 +31,8 @@ const sidebarSlice = createSlice({
 
     setDisplayedPost(state, action) {
       state.content = "post";
-      const { post_id, location, author, story } = action.payload;
-      state.post.postId = post_id;
+      const { postId, location, author, story } = action.payload;
+      state.post.postId = postId;
       state.post.location = location;
       state.post.author = author;
       state.post.story = story;
