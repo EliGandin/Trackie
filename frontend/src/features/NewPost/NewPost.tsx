@@ -41,6 +41,7 @@ const NewPost = () => {
     formData.append("postData", JSON.stringify(postData));
 
     newPost(formData);
+    dispatch(renderContent({ content: "feed" }));
   };
 
   return (

@@ -5,9 +5,9 @@ import { LatLngTuple } from "leaflet";
 type Post = {
   post_id: number;
   location: { name: string; coordinates: LatLngTuple };
-  // author: string;
   user_id: number;
   story: string;
+  image: string;
 };
 
 const UserMarkers = () => {

@@ -32,7 +32,7 @@ const SinglePost = () => {
 
       <p className="py-2">{post.story} </p>
 
-      <img className="h-36 w-36" src={image.toString()} />
+      <img className="h-36 w-36" src={image?.toString()} />
 
       <button
         className="border-stone-10 absolute bottom-16 self-center rounded border px-2 text-neutral-100"

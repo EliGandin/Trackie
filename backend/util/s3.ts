@@ -5,18 +5,19 @@ import {
 } from "@aws-sdk/client-s3";
 import sharp from "sharp";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import dotenv from "dotenv";
 
 import db from "./db";
 import { randomImageName } from "./helpers";
 
+dotenv.config();
+
 const s3 = new S3Client({
-  // region: process.env.BUCKET_REGION ?? "",
+  // region: process.env.BUCKET_REGION as string,
   region: "eu-north-1",
   credentials: {
-    // accessKeyId: process.env.ACCESS_KEY as string,
-    accessKeyId: "AKIAXYKJQJHCUJV7TB6E",
-    // secretAccessKey: process.env.SECRET_ACCESS_KEY as string,
-    secretAccessKey: "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",
+    accessKeyId: process.env.ACCESS_KEY as string,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY as string,
   },
 });
 
@@ -28,7 +29,7 @@ export const putImage = async (file: Express.Multer.File, id: number) => {
   const imageName = randomImageName();
 
   const params = {
-    Bucket: process.env.BUCKET_NAME ?? "",
+    Bucket: process.env.BUCKET_NAME as string,
     Key: imageName,
     Body: buffer,
     ContentType: file.mimetype,
@@ -49,7 +50,7 @@ export const getImage = async (postId: number) => {
   ).rows[0].image;
 
   const getObjectParams = {
-    Bucket: "trackie",
+    Bucket: process.env.BUCKET_NAME,
     Key: imageName,
   };
 

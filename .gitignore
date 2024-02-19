@@ -17,6 +17,7 @@ package-lock.json
 # Environment variables
 .env
 .env.local
+global.d.ts
 
 # Additional ignore patterns (optional)
 .DS_Store
