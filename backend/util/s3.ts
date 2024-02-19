@@ -13,11 +13,11 @@ import { randomImageName } from "./helpers";
 dotenv.config();
 
 const s3 = new S3Client({
-  // region: process.env.BUCKET_REGION as string,
-  region: "eu-north-1",
+  region: process.env.BUCKET_REGION as string,
+  // region: "eu-north-1",
   credentials: {
-    accessKeyId: process.env.ACCESS_KEY as string,
-    secretAccessKey: process.env.SECRET_ACCESS_KEY as string,
+    accessKeyId: process.env.S3_ACCESS_KEY as string,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY as string,
   },
 });
 
