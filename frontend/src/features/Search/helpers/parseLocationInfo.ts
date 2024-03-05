@@ -1,5 +1,5 @@
 export const parseLocation = (arr: unknown[]) => {
-  return arr.map((el: unknown) => {
+  return (arr as unknown[]).map((el: unknown) => {
     return { name: el.display_name as string, coordinates: [el.lat, el.lon] };
   });
 };

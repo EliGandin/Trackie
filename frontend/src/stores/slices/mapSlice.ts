@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { LatLngTuple, Marker } from "leaflet";
 import { RootState } from "../store";
 
-type Markers = {
+type MapUtil = {
   cursorMarker: LatLngTuple | undefined;
   postId: number;
   userMarkers: Marker[];
   // friendsMarkers: Marker[] //TODO:
 };
 
-const initialState: Markers = {
+const initialState: MapUtil = {
   cursorMarker: undefined,
   userMarkers: [],
   postId: 0,
@@ -45,6 +45,10 @@ const mapSlice = createSlice({
 
 export const cursorMarker = (state: RootState) => {
   return state.map.cursorMarker;
+};
+
+export const getDestination = (state: RootState) => {
+  return state.map.destination;
 };
 
 export const userMarkers = (state: RootState) => {
