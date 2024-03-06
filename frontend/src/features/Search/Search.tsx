@@ -2,24 +2,21 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useEffect, useState } from "react";
 import { getCoordinates } from "../../services/geoLocationServices";
-import { isOptionIncluded, parseLocation } from "./helpers/parseLocationInfo";
+import { parseLocation } from "./helpers/parseLocationInfo";
 import { useDispatch } from "react-redux";
-import { setCursorMarker } from "../../stores/slices/mapSlice";
-
-interface coordinates {
-  coordinates: [number, number];
-}
+import { setCursorMarker, setLocationName } from "../../stores/slices/mapSlice";
+import { renderContent } from "../../stores/slices/sidebarSlice";
 
 interface Option {
   name: string;
-  coordinates: coordinates;
+  coordinates: number[];
 }
 
 const Search = () => {
   const [value, setValue] = useState<string | null>("");
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [optionsCoords, setOptionsCoords] = useState<Option[] | undefined>([]);
-  const [coordinates, setCoordinates] = useState<coordinates | undefined>(
+  const [coordinates, setCoordinates] = useState<number[] | undefined>(
     undefined,
   );
   const [options, setOptions] = useState<string[]>([]);
@@ -47,7 +44,7 @@ const Search = () => {
   };
 
   const handleSelectedOption = (
-    e: React.SyntheticEvent<Element, Event>,
+    _e: React.SyntheticEvent<Element, Event>,
     v: string | null,
   ) => {
     setSelectedOption(v);
@@ -91,6 +88,22 @@ const Search = () => {
       <div className="relative right-0 top-28 self-center rounded border border-neutral-100 px-2 text-lg">
         <button onClick={() => dispatch(setCursorMarker(coordinates))}>
           Fly To Location
+        </button>
+      </div>
+
+      <div className="self-center">
+        <button
+          className="absolute bottom-5 w-[32px] rounded-full border border-solid bg-neutral-600 pb-1 text-lg font-bold"
+          onClick={() => {
+            dispatch(
+              renderContent({
+                content: "newPost",
+              }),
+            );
+            dispatch(setLocationName(selectedOption));
+          }}
+        >
+          +
         </button>
       </div>
     </div>

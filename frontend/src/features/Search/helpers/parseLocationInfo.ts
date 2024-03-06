@@ -1,15 +1,11 @@
+interface LocationElement {
+  display_name: string;
+  lat: number;
+  lon: number;
+}
+
 export const parseLocation = (arr: unknown[]) => {
-  return (arr as unknown[]).map((el: unknown) => {
-    return { name: el.display_name as string, coordinates: [el.lat, el.lon] };
+  return (arr as LocationElement[]).map((el) => {
+    return { name: el.display_name, coordinates: [el.lat, el.lon] };
   });
-};
-
-export const isOptionIncluded = (query: string, option: string) => {
-  if (query === "") return;
-  // Normalize the query and option for case-insensitive and optional whitespace comparison
-  const normalizedQuery = query.trim().toLowerCase();
-  const normalizedOption = option.trim().toLowerCase();
-
-  // Check if the normalized query is included in the normalized option
-  return normalizedOption.includes(normalizedQuery);
 };

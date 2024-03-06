@@ -4,6 +4,7 @@ import { RootState } from "../store";
 
 type MapUtil = {
   cursorMarker: LatLngTuple | undefined;
+  locationName: string | null;
   postId: number;
   userMarkers: Marker[];
   // friendsMarkers: Marker[] //TODO:
@@ -11,6 +12,7 @@ type MapUtil = {
 
 const initialState: MapUtil = {
   cursorMarker: undefined,
+  locationName: null,
   userMarkers: [],
   postId: 0,
   // friendsMarkers: Marker[] //TODO:
@@ -40,6 +42,10 @@ const mapSlice = createSlice({
     clearCursorMarker(state) {
       state.cursorMarker = undefined;
     },
+
+    setLocationName(state, action) {
+      state.locationName = action.payload;
+    },
   },
 });
 
@@ -47,15 +53,20 @@ export const cursorMarker = (state: RootState) => {
   return state.map.cursorMarker;
 };
 
-export const getDestination = (state: RootState) => {
-  return state.map.destination;
+export const getLocationName = (state: RootState) => {
+  return state.map.locationName;
 };
 
 export const userMarkers = (state: RootState) => {
   return state.map.userMarkers;
 };
 
-export const { addMarker, deleteMarker, setCursorMarker, clearCursorMarker } =
-  mapSlice.actions;
+export const {
+  addMarker,
+  deleteMarker,
+  setCursorMarker,
+  clearCursorMarker,
+  setLocationName,
+} = mapSlice.actions;
 
 export default mapSlice.reducer;
