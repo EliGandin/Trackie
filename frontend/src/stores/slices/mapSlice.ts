@@ -2,15 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import { LatLngTuple, Marker } from "leaflet";
 import { RootState } from "../store";
 
-type Markers = {
+type MapUtil = {
   cursorMarker: LatLngTuple | undefined;
+  locationName: string | null;
   postId: number;
   userMarkers: Marker[];
   // friendsMarkers: Marker[] //TODO:
 };
 
-const initialState: Markers = {
+const initialState: MapUtil = {
   cursorMarker: undefined,
+  locationName: null,
   userMarkers: [],
   postId: 0,
   // friendsMarkers: Marker[] //TODO:
@@ -40,6 +42,10 @@ const mapSlice = createSlice({
     clearCursorMarker(state) {
       state.cursorMarker = undefined;
     },
+
+    setLocationName(state, action) {
+      state.locationName = action.payload;
+    },
   },
 });
 
@@ -47,11 +53,20 @@ export const cursorMarker = (state: RootState) => {
   return state.map.cursorMarker;
 };
 
+export const getLocationName = (state: RootState) => {
+  return state.map.locationName;
+};
+
 export const userMarkers = (state: RootState) => {
   return state.map.userMarkers;
 };
 
-export const { addMarker, deleteMarker, setCursorMarker, clearCursorMarker } =
-  mapSlice.actions;
+export const {
+  addMarker,
+  deleteMarker,
+  setCursorMarker,
+  clearCursorMarker,
+  setLocationName,
+} = mapSlice.actions;
 
 export default mapSlice.reducer;
