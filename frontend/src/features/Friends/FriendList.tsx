@@ -1,6 +1,6 @@
 const FriendList = () => {
   //FETCH DATA
-  return <div>FriendList</div>;
+  return <div>Coming Soon</div>;
 };
 
 export default FriendList;
