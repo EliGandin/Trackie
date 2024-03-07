@@ -132,7 +132,10 @@ const NewPost = () => {
 
           <button
             className="ml-2 rounded border border-stone-100 bg-zinc-600 p-2 text-stone-100"
-            onClick={() => dispatch(setCursorMarker(coordinates))}
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(setCursorMarker(coordinates));
+            }}
           >
             Fly To Location
           </button>
