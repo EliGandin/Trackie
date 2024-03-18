@@ -1,6 +1,6 @@
 import { Post } from "../models/post.model";
-import db from "../util/db";
-import { getImage } from "../util/s3";
+import db from "../util/db/db";
+import { getImage } from "../util/db/s3";
 
 export const getAllPosts = async () => {
   try {

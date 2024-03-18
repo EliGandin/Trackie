@@ -1,6 +1,6 @@
 import { validate } from "email-validator";
 import { User } from "../models/user.model";
-import db from "./db";
+import db from "./db/db";
 
 const isValidNewUser = async (user: User) => {
   isValidEmail(user.email);

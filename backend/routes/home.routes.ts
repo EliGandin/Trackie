@@ -8,7 +8,7 @@ import {
   addPost,
   deletePost,
 } from "../controllers/post.controller";
-import { uploadImage } from "../middlewares/multer";
+import { getCoordinates } from "../controllers/location.controller";
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -26,5 +26,7 @@ router.delete("/post/:id", deletePost);
 router.post("/signup", signUpUser); //TODO: TESTING PURPOSES ONLY
 
 router.post("/login", loginUser);
+
+router.get("/location/:query", getCoordinates)
 
 export default router;

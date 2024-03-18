@@ -1,6 +1,6 @@
 import { compare, hash } from "bcrypt";
 import { User } from "../models/user.model";
-import db from "../util/db";
+import db from "../util/db/db";
 
 export const getUserById = async (id: number) => {
   try {

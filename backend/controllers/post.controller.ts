@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 
-import db from "../util/db";
+import db from "../util/db/db";
 import { Post } from "../models/post.model";
 import {
   getAllPosts,
   getPostById,
   insertPost,
 } from "../repositories/post.repository";
-import { putImage } from "../util/s3";
+import { putImage } from "../util/db/s3";
 
 export const getIndex = async (req: Request, res: Response) => {
   try {
