@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Autocomplete, TextField } from "@mui/material";
 
 import { getCoordinates } from "../../../services/geoLocationServices";
-import { parseLocation } from "../../../features/Search/helpers/parseLocationInfo";
 import { setLocationCoordinates } from "../../../stores/slices/mapSlice";
 
 interface Option {
@@ -22,12 +21,11 @@ const SearchAutocomplete = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await getCoordinates(value);
-      const parsedArr = parseLocation(res);
 
-      if (!parsedArr) return;
+      if (!res.data) return;
 
-      setOptionsCoords(parsedArr);
-      setOptions(parsedArr.map((el) => el.name));
+      setOptionsCoords(res.data);
+      setOptions((res.data as Option[]).map((el) => el.name));
     };
 
     fetchData();
